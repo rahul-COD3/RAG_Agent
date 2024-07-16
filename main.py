@@ -1,8 +1,8 @@
 from dotenv import load_dotenv
-from agent.agent import initialize_agent
+from src.agent.agent import initialize_agent
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI, HTTPException, Request
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException
+from src.models.model import ChatRequest
 
 # Load environment variables
 load_dotenv()
@@ -23,8 +23,7 @@ app.add_middleware(
 agent = initialize_agent()
 
 # Pydantic model for chat request
-class ChatRequest(BaseModel):
-    message: str
+
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
