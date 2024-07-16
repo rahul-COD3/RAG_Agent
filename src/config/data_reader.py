@@ -9,7 +9,6 @@ def load_local_data():
 
 # def load_web_data(url: str):
 #     firecrawl_reader = FireCrawlWebReader(
-#         api_key="fc-5a058f253d75495eba0a49fc9c07b2e6",
 #         mode="scrape",
 #         params={"additional": "parameters"},
 #     )

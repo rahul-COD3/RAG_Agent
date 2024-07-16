@@ -6,6 +6,7 @@ from src.config.embedding_model_config import configure_embedding_model
 from llama_index.core import Settings
 from src.config.data_reader import load_local_data, load_web_data
 from src.config.vector_store_config import initialize_vector_store
+from src.consts.disc_consts import HOTEL_TOOL_DESCRIPTION
 import chromadb
 
 def check_hotel_reservation_availability(date: str) -> str:
@@ -45,9 +46,7 @@ def initialize_agent():
     hotel_policy_and_services_tool = QueryEngineTool.from_defaults(
         hotel_query_engine(),
         name="Hotel",
-        description="Provide detailed information about hotel policies, services, amenities, and general inquiries. "
-                    "This includes check-in/check-out times, cancellation policies, available facilities (e.g., gym, pool), "
-                    "room service details, parking information, pet policies, and other hotel-related services."
+        description= HOTEL_TOOL_DESCRIPTION
     )
 
     gujarat_wiki_tool = QueryEngineTool.from_defaults(
